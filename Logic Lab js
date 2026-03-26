@@ -1,0 +1,32 @@
+let num1, num2, correct;
+let score = 0;
+
+function newQuestion() {
+  num1 = Math.floor(Math.random() * 10);
+  num2 = Math.floor(Math.random() * 10);
+  correct = num1 + num2;
+
+  document.getElementById("question").innerText =
+    `What is ${num1} + ${num2}?`;
+
+  document.getElementById("answer").value = "";
+}
+
+function checkAnswer() {
+  let user = document.getElementById("answer").value;
+
+  if (user == correct) {
+    score++;
+    document.getElementById("result").innerText = "✅ Correct!";
+  } else {
+    document.getElementById("result").innerText =
+      "❌ Wrong! Answer: " + correct;
+  }
+
+  document.getElementById("score").innerText = "Score: " + score;
+
+  setTimeout(newQuestion, 1000);
+}
+
+// Start first question
+newQuestion();
